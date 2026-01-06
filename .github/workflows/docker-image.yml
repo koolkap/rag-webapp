@@ -1,18 +1,26 @@
-name: Docker Image CI
+name: Build and Push Image
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Login to ACR
+      uses: azure/docker-login@v2
+      with:
+        login-server: <acr-name>.azurecr.io
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Build and push
+      run: |
+        docker build -t <acr-name>.azurecr.io/rag-webapp:latest .
+        docker push <acr-name>.azurecr.io/rag-webapp:latest
