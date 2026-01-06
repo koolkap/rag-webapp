@@ -16,11 +16,11 @@ jobs:
     - name: Login to ACR
       uses: azure/docker-login@v2
       with:
-        login-server: <acr-name>.azurecr.io
+        login-server: ${{ secrets.ACR_LOGIN_SERVER }}
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
 
     - name: Build and push
       run: |
-        docker build -t <acr-name>.azurecr.io/rag-webapp:latest .
-        docker push <acr-name>.azurecr.io/rag-webapp:latest
+        docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/rag-webapp:v2 .
+        docker push ${{ secrets.ACR_LOGIN_SERVER }}/rag-webapp:v2
