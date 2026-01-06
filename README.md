@@ -7,6 +7,10 @@ AZURE_OPENAI_API_KEY
 AZURE_OPENAI_DEPLOYMENT_NAME
 AZURE_OPENAI_API_VERSION
 
+#test locally
+python -m uvicorn app.main:app --reload
+
+
 ## Run locally
 docker build -t rag-webapp .
 docker run -p 8000:8000 rag-webapp
