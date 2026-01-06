@@ -25,10 +25,4 @@ jobs:
         docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/rag-webapp:latest .
         docker push ${{ secrets.ACR_LOGIN_SERVER }}/rag-webapp:latest 
 
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v3
-      with:
-        app-name: 'rag-webapp'
-        slot-name: 'staging'  # Deploy to the 'staging' slot instead of production
-        package: './output'
          
