@@ -9,7 +9,7 @@ def home():
     return """
     <html>
         <body>
-            <h2>Azure RAG Demo (gpt-4o-mini)</h2>
+            <h2>Azure Sample RAG Demo (gpt-4o-mini)</h2>
             <form method="post">
                 <textarea name="question" rows="6" cols="60"></textarea><br><br>
                 <input type="submit" value="Ask"/>
