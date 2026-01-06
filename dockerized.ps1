@@ -8,7 +8,7 @@
 $RESOURCE_GROUP = "rg-email-reminder"
 $ACR_NAME       = "dockercicd"        # no .azurecr.io
 $IMAGE_NAME     = "rag-webapp"
-$IMAGE_TAG      = "v2"
+$IMAGE_TAG      = "latest"
 # =============================
 
 # Login to ACR
